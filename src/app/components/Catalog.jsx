@@ -67,8 +67,8 @@ export default function Catalog() {
     return (
         <div>
 
-            <CategoryFilter value={category} setCategory={setCategory} />
-            <PriceFilter value={maxPrice} setMaxPrice={setMaxPrice} />
+            <CategoryFilter value={category} onChange={setCategory} />
+            <PriceFilter value={maxPrice} onChange={setMaxPrice} />
             <ProductList products={filteredProducts} addToCart={addToCart} />
             <CartSummary cart={cart} products={products} clearCart={setCart} />
 
