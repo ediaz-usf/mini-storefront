@@ -62,4 +62,9 @@ export default function Catalog() {
     }
 
 
+    if (loading) return <StatusMessage state="loading" />;
+    if (error) return <StatusMessage state="error" />;
+    if (filteredProducts.length === 0) return <StatusMessage state="empty" />;
+
+
 }
