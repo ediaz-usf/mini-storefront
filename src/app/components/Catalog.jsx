@@ -13,7 +13,7 @@ export default function Catalog() {
     const [error, setError] = useState(false);
 
     const [category, setCategory] = useState('');
-    const [maxPrice, setMaxPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState(0);
 
     const [cart, setCart] = useState({});
 
@@ -69,7 +69,12 @@ export default function Catalog() {
 
             <CategoryFilter value={category} onChange={setCategory} />
             <PriceFilter value={maxPrice} onChange={setMaxPrice} />
-            <ProductList products={filteredProducts} addToCart={addToCart} />
+
+            {filteredProducts.length === 0 ? 
+                (<StatusMessage type="empty" />) 
+                    : 
+                (<ProductList products={filteredProducts} addToCart={addToCart} />)}
+
             <CartSummary cart={cart} products={products} clearCart={setCart} />
 
         </div>

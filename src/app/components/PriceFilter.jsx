@@ -6,7 +6,10 @@ export default function PriceFilter({ value, onChange }) {
             type="number" 
             placeholder="Max Price"
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => {
+                const val = e.target.value;
+                onChange(val === "" ? 0 : Number(val));
+            }}
         />
     )
 }
