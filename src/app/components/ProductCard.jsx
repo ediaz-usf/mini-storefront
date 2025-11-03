@@ -1,6 +1,6 @@
 'use client';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, addToCart }) {
 
     return (
         <div>
@@ -9,7 +9,7 @@ export default function ProductCard({ product }) {
             <p>Category: {product.category}</p>
             <p>In Stock: {product.stock}</p>
 
-            <button disabled={product.stock === 0} onclick={() => alert(`Added ${product.name} to cart!`)}>
+            <button disabled={product.stock === 0} onClick={() => addToCart(product)}>
                 {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
             </button>
         </div>
