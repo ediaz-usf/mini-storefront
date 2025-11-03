@@ -13,7 +13,7 @@ export default function Catalog() {
     const [error, setError] = useState(false);
 
     const [category, setCategory] = useState('');
-    const [maxPrice, setMaxPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState("");
 
     const [cart, setCart] = useState({});
 
@@ -61,8 +61,6 @@ export default function Catalog() {
 
     if (loading) return <StatusMessage state="loading" />;
     if (error) return <StatusMessage state="error" />;
-    if (filteredProducts.length === 0) return <StatusMessage state="empty" />;
-
 
     return (
         <div>
