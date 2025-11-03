@@ -1,15 +1,11 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
-//import GET from './api/products/route';
-//import ProductCard from './components/ProductCard';
-import ProductList from './components/ProductList';
-import CategoryFilter from './components/CategoryFilter';
-import PriceFilter from './components/PriceFilter';
-import CartSumamry from './components/CartSummary';
-import StatusMessage from './components/StatusMessage';
-import ProductCard from './ProductCard';
-
+import {useState, useEffect } from 'react';
+import ProductList from "./ProductList";
+import CategoryFilter from "./CategoryFilter";
+import PriceFilter from "./PriceFilter";
+import CartSummary from "./CartSummary";
+import StatusMessage from "./StatusMessage";
 
 export default function Catalog() {
     const [products, setProducts] = useState([]);
@@ -22,11 +18,12 @@ export default function Catalog() {
     const [cart, setCart] = useState({});
 
     useEffect(() => {
-        async function fetchProducts() {
+        async function loadProducts() {
             try {
                 const res = await fetch('/api/products');
                 const data = await res.json();
                 setProducts(data);
+                setLoading(false);
             } catch (err) {
                 setError(true);
             }
@@ -66,5 +63,16 @@ export default function Catalog() {
     if (error) return <StatusMessage state="error" />;
     if (filteredProducts.length === 0) return <StatusMessage state="empty" />;
 
+
+    return (
+        <div>
+
+            <CategoryFilter value={category} setCategory={setCategory} />
+            <PriceFilter value={maxPrice} setMaxPrice={setMaxPrice} />
+            <ProductList products={filteredProducts} addToCart={addToCart} />
+            <CartSummary cart={cart} products={products} clearCart={setCart} />
+
+        </div>
+    )
 
 }

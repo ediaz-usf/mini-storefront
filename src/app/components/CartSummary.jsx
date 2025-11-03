@@ -1,6 +1,6 @@
 'use client';
 
-export default function CartSumamry({ cart, products, clearCart }) {
+export default function CartSummary({ cart, products, clearCart }) {
     
     const total = Object.entries(cart).reduce((sum, [id, qty]) => {
         const product = products.find((p) => p.id === id);
