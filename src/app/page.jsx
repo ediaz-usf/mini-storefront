@@ -1,5 +1,6 @@
 import GET from './api/products/route';
 import Catalog from './components/Catalog';
+import ProductList from './components/ProductList';
 
 export default function Home() {
   return (

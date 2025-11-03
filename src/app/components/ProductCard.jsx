@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
             <p>In Stock: {product.stock}</p>
 
             <button disabled={product.stock === 0} onclick={() => alert(`Added ${product.name} to cart!`)}>
-
+                {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
             </button>
         </div>
         
