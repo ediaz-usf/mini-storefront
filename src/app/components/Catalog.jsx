@@ -1,8 +1,8 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import GET from './api/products/route';
-import ProductCard from './components/ProductCard';
+//import GET from './api/products/route';
+//import ProductCard from './components/ProductCard';
 import ProductList from './components/ProductList';
 import CategoryFilter from './components/CategoryFilter';
 import PriceFilter from './components/PriceFilter';
@@ -34,7 +34,21 @@ export default function Catalog() {
         loadProducts();
     }, []);
 
-    
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setProducts(prev => 
+                prev.map(p => 
+                    p.stock > 0 ? { ...p, stock: p.stock - 1 } : p
+                )
+            );
+        }, 30000);
+        
+        return () => clearInterval(interval);
+
+    })
+
+    
+    
 
 }
