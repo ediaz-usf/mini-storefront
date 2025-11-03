@@ -54,6 +54,12 @@ export default function Catalog() {
     );
 
     
+    //define addToCart
+    function addToCart(product) {
+        if (product.stock <= 0) return;
+
+        setCart(prevCart => ({...prevCart, [product.id]: (prevCart[product.id] || 0) + 1}));
+    }
 
 
 }
