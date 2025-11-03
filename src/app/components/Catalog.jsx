@@ -46,9 +46,14 @@ export default function Catalog() {
         
         return () => clearInterval(interval);
 
-    })
+    }, []);
+
+    const filteredProducts = products.filter(p => 
+        (category ? p.category === category : true) &&
+        (maxPrice ? p.price <= parseFloat(maxPrice) : true)
+    );
 
     
-    
+
 
 }
