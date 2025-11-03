@@ -1,5 +1,6 @@
 'use client';
 
+// import necessary components
 import {useState, useEffect } from 'react';
 import ProductList from "./ProductList";
 import CategoryFilter from "./CategoryFilter";
@@ -7,7 +8,9 @@ import PriceFilter from "./PriceFilter";
 import CartSummary from "./CartSummary";
 import StatusMessage from "./StatusMessage";
 
+
 export default function Catalog() {
+    // state variables
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -17,6 +20,7 @@ export default function Catalog() {
 
     const [cart, setCart] = useState({});
 
+    // fetch products
     useEffect(() => {
         async function loadProducts() {
             try {
@@ -32,6 +36,7 @@ export default function Catalog() {
     }, []);
 
 
+    // simulate stock changes with interval
     useEffect(() => {
         const interval = setInterval(() => {
             setProducts(prev => 
@@ -45,6 +50,7 @@ export default function Catalog() {
 
     }, []);
 
+    //filter products based on category and maxPrice
     const filteredProducts = products.filter(p => 
         (category ? p.category === category : true) &&
         (maxPrice ? p.price <= parseFloat(maxPrice) : true)
@@ -58,10 +64,11 @@ export default function Catalog() {
         setCart(prevCart => ({...prevCart, [product.id]: (prevCart[product.id] || 0) + 1}));
     }
 
-
+    // shows errors or loading states
     if (loading) return <StatusMessage state="loading" />;
     if (error) return <StatusMessage state="error" />;
 
+    // shows the main catalog
     return (
         <div>
 
