@@ -4,6 +4,8 @@ import ProductCard from './components/ProductCard';
 import ProductList from './components/ProductList';
 import CategoryFilter from './components/CategoryFilter';
 import PriceFilter from './components/PriceFilter';
+import CartSumamry from './components/CartSummary';
+import StatusMessage from './components/StatusMessage';
 
 export default function Home() {
   return (
